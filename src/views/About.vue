@@ -1,7 +1,9 @@
 <template>
   <div class="about">
-    <h1>This is an about page</h1>
-    <input type="text" name="check">
+    <p>Author: <b>Mibi</b></p>
+    <p>Vuejs (babel, cypress, eslint, pwa, unit-jest, vuex, vuexfire, svg)</p>
+    <p>Firebase (Cloud Database, Functions, Hosting, Storage, Emulator)</p>
+    <a href="https://github.com/mibi2007/abc-game">Github repository</a>
   </div>
 </template>
 <script>
@@ -20,3 +22,8 @@ export default {
   }
 }
 </script>
+<style lang="scss">
+  .about{
+    padding: 15px;
+  }
+</style>

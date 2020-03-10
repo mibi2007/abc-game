@@ -2,7 +2,7 @@
   <div class="flex" style="height: 100%">
     <div id="abcGameWrapper" ref="abcGameWrapper">
       <div id="text" ref="text"></div>
-      <input id="inputText" name="inputText" type="text" ref="inputText" v-model="inputText" />
+      <input id="inputText" name="inputText" type="text" ref="inputText" v-model="inputText" autocomplete="off" />
       <slot name="navbar"></slot>
     </div>
   </div>
@@ -37,39 +37,42 @@ export default Vue.extend({
       // console.log(this.$el)
       this.gameWrapper = document.getElementById('gameWrapper')
       let touchDevice = navigator.maxTouchPoints
+      let vm = this
       if (touchDevice) {
-        var timeout
-        var lastTap = 0
+        let timeout
+        let lastTap = 0
+        let events = ['click','touchend']
+        events.forEach( (evt) => {
+          vm.$refs.abcGameWrapper.addEventListener(evt, function(e) {
+            var currentTime = new Date().getTime()
+            var tapLength = currentTime - lastTap
 
-        this.$refs.abcGameWrapper.addEventListener('touchend click', function(e) {
-          var currentTime = new Date().getTime()
-          var tapLength = currentTime - lastTap
+            e.preventDefault()
+            clearTimeout(timeout)
 
-          e.preventDefault()
-          clearTimeout(timeout)
-
-          if (tapLength < 500 && tapLength > 0) {
-            //Double Tap/Click
-            this.$refs.inputText.focus()
-          } else {
-            //Single Tap/Click
-            timeout = setTimeout(() => {
-              //Single Tap/Click code here
-              this.$refs.inputText.blur()
-              this.press()
-              clearTimeout(timeout)
-            }, 500)
-          }
-          lastTap = currentTime
-        })
+            if (tapLength < 500 && tapLength > 0) {
+              //Double Tap/Click
+              vm.$refs.inputText.focus()
+            } else {
+              //Single Tap/Click
+              timeout = setTimeout(() => {
+                //Single Tap/Click code here
+                vm.$refs.inputText.blur()
+                vm.press()
+                clearTimeout(timeout)
+              }, 500)
+            }
+            lastTap = currentTime
+          })
+        });
+          
       } else {
-        this.$refs.inputText.focus()
-        this.$refs.abcGameWrapper.addEventListener('click', () => {
-          this.press()
-          this.$refs.inputText.focus()
+        vm.$refs.inputText.focus()
+        vm.$refs.abcGameWrapper.addEventListener('click', () => {
+          vm.press()
+          vm.$refs.inputText.focus()
         })
       }
-      let vm = this
       this.$refs.inputText.addEventListener(
         'keyup',
         utils.delay(function() {
