@@ -1,18 +1,30 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
-  </div>
+  <!-- <keep-alive> -->
+    <keep-alive><AbcGame></AbcGame></keep-alive>
+  <!-- </keep-alive> -->
 </template>
 
 <script>
+import Vue from 'vue'
+import { mapMutations } from 'vuex'
 // @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
+import AbcGame from '@/components/AbcGame/AbcGame.vue'
+import GameLayout from '@/layouts/GameLayout.vue'
 
-export default {
-  name: "Home",
+export default Vue.extend({
+  name: 'Home',
   components: {
-    HelloWorld
+    AbcGame
+  },
+  created() {
+    console.log('created Home')
+    this.setLayout(GameLayout)
+  },
+  methods: {
+    ...mapMutations('app', ['setLayout'])
+  },
+  destroyed() {
+    console.log('destroyed Home')
   }
-};
+})
 </script>
