@@ -1,6 +1,6 @@
 <template>
   <!-- <keep-alive> -->
-    <keep-alive><AbcGame></AbcGame></keep-alive>
+    <AbcGame></AbcGame>
   <!-- </keep-alive> -->
 </template>
 
@@ -18,6 +18,7 @@ export default Vue.extend({
   },
   created() {
     console.log('created Home')
+    console.log(GameLayout)
     this.setLayout(GameLayout)
   },
   methods: {

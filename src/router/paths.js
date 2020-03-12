@@ -3,17 +3,20 @@
  * for more information on routes, see the
  * official documentation https://router.vuejs.org/en/
  */
-// import Home from "@/views/Home.vue";
-// import Test from "@/views/Test.vue";
+
+import GameLayout from '@/layouts/GameLayout.vue'
+import PageLayout from '@/layouts/PageLayout.vue'
 
 export default [
   {
-    path: '',
+    path: '/',
     // Relative to /src/views
-    view: 'Home'
+    view: 'Home',
+    layout: GameLayout
   },
   {
     path: '/about',
-    view: 'About'
+    view: 'About',
+    layout: PageLayout
   }
 ]

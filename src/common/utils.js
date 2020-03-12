@@ -23,14 +23,6 @@ let lightOrDark = function(color) {
     return 'dark'
   }
 }
-let delay = function(fn, ms) {
-  let timer = 0
-  return function(...args) {
-    clearTimeout(timer)
-    timer = setTimeout(fn.bind(this, ...args), ms || 0)
-  }
-}
 export default {
-  lightOrDark,
-  delay
+  lightOrDark
 }

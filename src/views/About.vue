@@ -1,5 +1,10 @@
 <template>
   <div class="about">
+    <h3>Hướng dẫn</h3>
+    <h4>Desktop:</h4>
+    <p> - Bấm Space</p>
+    <p></p>
+    <hr>
     <p>Author: <b>Mibi</b></p>
     <p>Vuejs (babel, cypress, eslint, pwa, unit-jest, vuex, vuexfire, svg)</p>
     <p>Firebase (Cloud Database, Functions, Hosting, Storage, Emulator)</p>
@@ -13,8 +18,10 @@ import { mapMutations } from 'vuex'
 import PageLayout from '@/layouts/PageLayout.vue'
 
 export default {
-  name: 'Home',
+  name: 'About',
   created() {
+    console.log('created About')
+    console.log(PageLayout)
     this.setLayout(PageLayout)
   },
   methods: {

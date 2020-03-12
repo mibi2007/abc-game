@@ -3,7 +3,7 @@
     <header>
       <Navbar></Navbar>
     </header>
-    <slot />
+    <slot></slot>
   </div>
 </template>
 <script>
@@ -18,6 +18,6 @@ export default {
 </script>
 <style>
 #pageWrapper{
-  height: 100%
+  height: 100%;
 }
 </style>

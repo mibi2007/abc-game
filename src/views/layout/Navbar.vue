@@ -30,7 +30,7 @@ export default Vue.extend({
     active: ''
   }),
   created(){
-    console.log('run');
+    console.log('created Navbar');
     this.active = this.$route.path.substr(1);
   },
   methods: {
